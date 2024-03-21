@@ -1,24 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { userContext } from './UserContext';
+import ChildComponent from './ChildComponent';
 function App() {
+
+  // creating object and pass it using context api (solution of props drilling)
+  const productInfor = { id: 20, price: '200', location: 'Islamabad' }
+
+  // userContext has two properties .Provider and .Consumer 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <userContext.Provider value={productInfor}>
+      <div className="App">
+        <h1>Example of context-api with hook (use-context)</h1>
+        <ChildComponent></ChildComponent>
+      </div>
+    </userContext.Provider>
   );
 }
 
